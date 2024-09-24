@@ -41,6 +41,22 @@ html {
   --max-width-image: 300px;
   --max-width-footer-section: 250px;
 
+  /* Bil á milli „stærri“ eininga (header, efnisbox, footer) */
+  --vertical-space: calc(var(--gutter) * 1);
+  --vertical-space-large: calc(var(--gutter) * 1.5);
+
+  /* Grid stillingar */
+  --columns: 12;
+  --gutter: 30px;
+  --offset: 20px;
+  /* Breidd á efni með offset */
+  --width-offset: calc(100% - (2 * var(--offset)));
+
+  /* Transitions */
+  --transition-time-short: 300ms;
+  --transition-time-long: 600ms;
+  --transition-timing-function: ease-in-out;
+
   /* Border breiddir */
   --border-width: 1px;
   --border-radius-regular: 5px;
@@ -150,11 +166,15 @@ a {
  * Athugið að til þess að þetta virki þar að setja <div class="wrapper"> utan um allt efni 
  * innan <body>.
  */
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing);
+
+ .wrapper {
+  /* Notum grid hér til að setja upp bil á milli header, meginmáls og fóts */
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 100%;
+  /* grid items eru miðjuð */
+  justify-items: center;
+  gap: var(--vertical-space);
 
   width: 100%;
   min-height: 100vh;
@@ -162,24 +182,54 @@ a {
   background-color: var(--color-background-primary);
 }
 
+@media (min-width: 320px) {
+  .wrapper {
+    gap: var(--vertical-space-large);
+  }
+}
+
+@media (min-width: 800px) {
+  .wrapper .wrapper-content {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: var(--gutter);
+  }
+  .wrapper .wrapper-nav {
+    grid-column: span 2;
+  }
+  .wrapper .wrapper-main {
+    grid-column: span 10;
+  }
+}
+
+@media (min-width: 800px) {
+  .wrapper {
+    gap: var(--vertical-space-large);
+  }
+}
+
+
 .wrapper .wrapper-content {
-  flex: 1;
-
-  display: flex;
-  gap: var(--spacing);
-
-  padding-left: var(--spacing);
-  padding-right: var(--spacing);
-  width: 100%;
+  width: var(--width-offset);
   max-width: var(--max-width);
 }
 
 .wrapper .wrapper-nav {
-  flex: 1;
+  margin-bottom: var(--spacing);
 }
 
-.wrapper .wrapper-main {
-  flex: 4;
+@media (min-width: 800px) {
+  .wrapper .wrapper-content {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: var(--gutter);
+  }
+  .wrapper .wrapper-nav {
+    grid-column: span 2;
+  }
+  .wrapper .wrapper-main {
+    grid-column: span 10;
+  }
 }
 
 /* Það sem fylgir er tillaga að uppbyggingu á selectorum fyrir verkefnið */
