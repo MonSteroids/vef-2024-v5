@@ -182,33 +182,6 @@ a {
   background-color: var(--color-background-primary);
 }
 
-@media (min-width: 320px) {
-  .wrapper {
-    gap: var(--vertical-space-large);
-  }
-}
-
-@media (min-width: 800px) {
-  .wrapper .wrapper-content {
-    display: grid;
-    grid-template-columns: repeat(var(--columns), 1fr);
-    gap: var(--gutter);
-  }
-  .wrapper .wrapper-nav {
-    grid-column: span 2;
-  }
-  .wrapper .wrapper-main {
-    grid-column: span 10;
-  }
-}
-
-@media (min-width: 800px) {
-  .wrapper {
-    gap: var(--vertical-space-large);
-  }
-}
-
-
 .wrapper .wrapper-content {
   width: var(--width-offset);
   max-width: var(--max-width);
@@ -216,16 +189,78 @@ a {
 
 .wrapper .wrapper-nav {
   margin-bottom: var(--spacing);
+  
+}
+
+@media (max-width: 320px) {
+  .wrapper-content {
+    display: block;
+  }
+  .wrapper .wrapper-nav ul {
+    display: block;
+    text-align: center;
+    padding: 0;
+  }
+}
+
+@media (min-width: 320px) {
+  .wrapper-content {
+    display: grid;
+  }
+  .wrapper-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 500px) {
+  .wrapper-content {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .wrapper .wrapper-nav {
+    text-align: center;
+    grid-column: span 2;
+  }
+  .wrapper .wrapper-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing);
+  }
+}
+
+@media (min-width: 700px) {
+  .wrapper-content {
+    grid-template-columns: 1fr;
+  }
+  .wrapper .wrapper-nav {
+    text-align: center;
+    grid-column: span 2;
+  }
+  .wrapper .wrapper-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing);
+  }
 }
 
 @media (min-width: 800px) {
+  .wrapper {
+    gap: var(--vertical-space-large);
+  }
   .wrapper .wrapper-content {
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
     gap: var(--gutter);
+    
+    max-width: var(--max-width);
   }
   .wrapper .wrapper-nav {
     grid-column: span 2;
+  }
+  .wrapper .wrapper-nav ul {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 200px;
   }
   .wrapper .wrapper-main {
     grid-column: span 10;
@@ -375,6 +410,16 @@ main > .content {
   gap: var(--spacing);
 
   margin-top: var(--spacing);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /** Fótur **/
