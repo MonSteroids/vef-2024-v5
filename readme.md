@@ -1,3 +1,4 @@
+Búinn að eyða of miklum tíma í þetta verkefni, moving on....
 # Vefforritun 1, 2024: Verkefni 5, CSS #3
 
 ## Markmið

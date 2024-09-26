@@ -212,6 +212,7 @@ a {
   }
 }
 
+
 @media (min-width: 500px) {
   .wrapper-content {
     display: grid;

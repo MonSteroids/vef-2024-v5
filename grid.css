@@ -12,9 +12,11 @@
     transparent var(--grid-repeating-width)
   );
 }
+
 html {
   position: relative;
 }
+
 html::before {
   content: '';
   position: absolute;
